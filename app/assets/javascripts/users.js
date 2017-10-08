@@ -48,10 +48,12 @@ $(document).on('turbolinks:load', function(){
   });
   //Stripe will return a card token.
   function stripeResponseHandler(status, response) {
+    console.log('Response Stripe Loaded');
     //Get the token from the response.
     var token = response.id;
     //Inject the card token in a hidden field.
     theForm.append( $('<input type="hidden" name="user[stripe_card_token]">').val(token) );
+
     //Submit form to our Rails app.
     theForm.get(0).submit();
   }
